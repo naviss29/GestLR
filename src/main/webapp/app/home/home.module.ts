@@ -3,7 +3,8 @@ import { RouterModule } from '@angular/router';
 
 import { GestLrSharedModule } from '../shared';
 
-import { HOME_ROUTE, HomeComponent } from './';
+import { HOME_ROUTE } from './home.route';
+import { HomeComponent } from './home.component';
 
 @NgModule({
     imports: [

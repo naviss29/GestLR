@@ -32,6 +32,9 @@
                 "database": "Base de données",
                 "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
             },
+            "custom": {
+                "conges": "Congés"
+            },
             "language": "Langue"
         },
         "form": {

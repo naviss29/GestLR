@@ -16,6 +16,7 @@ import { GestLrHomeModule } from './home/home.module';
 import { GestLrAdminModule } from './admin/admin.module';
 import { GestLrAccountModule } from './account/account.module';
 import { GestLrEntityModule } from './entities/entity.module';
+import { GestLrCongesModule} from './custom/conges/conges.module';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import {
@@ -38,6 +39,7 @@ import {
         GestLrAdminModule,
         GestLrAccountModule,
         GestLrEntityModule,
+        GestLrCongesModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
