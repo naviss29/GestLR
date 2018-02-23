@@ -17,6 +17,7 @@ import { GestLrAdminModule } from './admin/admin.module';
 import { GestLrAccountModule } from './account/account.module';
 import { GestLrEntityModule } from './entities/entity.module';
 import { GestLrCongesModule} from './custom/conges/conges.module';
+import { GestLrSaisieTempsModule} from './custom/saisie-temps/saisie-temps.module';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import {
@@ -28,6 +29,7 @@ import {
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
+import { SaisieTempsComponent } from './custom/saisie-temps/saisie-temps.component';
 
 @NgModule({
     imports: [
@@ -39,7 +41,8 @@ import {
         GestLrAdminModule,
         GestLrAccountModule,
         GestLrEntityModule,
-        GestLrCongesModule
+        GestLrCongesModule,
+        GestLrSaisieTempsModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
