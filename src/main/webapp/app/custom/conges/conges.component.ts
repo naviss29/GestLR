@@ -9,6 +9,7 @@ import { CongesService } from './conges.service';
 })
 export class CongesComponent implements OnInit {
     account: any;
+    submitted = false;
 
     constructor(
         private congesService: CongesService,
@@ -21,4 +22,6 @@ export class CongesComponent implements OnInit {
             this.account = account;
         });
     }
+
+    onSubmit() { this.submitted = true; }
 }

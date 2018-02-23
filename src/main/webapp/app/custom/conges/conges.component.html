@@ -2,6 +2,23 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 Les conges
+            <div class="form-group" (ngSubmit)="onSubmit()" #congesForm="ngForm">
+                <label for="typeConges">Type de congés</label>
+                <select class="form-control" id="typeConges" required>
+                    <option *ngFor="" [value]=""></option>
+                </select>
+                <input type="date" id="dateDebutConges">
+                <input type="date" id="dateFinConges">
+                <label for="plein">Journée complète</label>
+                <input type="radio" id="plein">
+                <label for="matin">Matinée</label>
+                <input type="radio" id="matin">
+                <label for="aprem">Après-midi</label>
+                <input type="radio" id="aprem">
+                <input type="checkbox" id="signatureConges">
+                <label for="signatureConges">Je valide mes congés.</label>
+                <button type="submit" [disabled]="!heroForm.form.valid">Envoyer</button>
+            </div>
         </div>
     </div>
 </div>
