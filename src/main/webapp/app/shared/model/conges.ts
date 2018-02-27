@@ -8,11 +8,12 @@ export interface Conges {
     signatureDemandeur?:boolean;
     signatureResponsable?:boolean;
     etat:Etat;
+
 }
 
 enum Etat {
     SoumisCollab,
     SoumisResp,
     SoumisRespMiss,
-    Clot 
+    Clot
 }
