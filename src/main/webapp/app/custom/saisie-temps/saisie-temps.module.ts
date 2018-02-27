@@ -6,10 +6,18 @@ import { GestLrSharedModule } from '../../shared';
 import {saisieTempsRoute} from './saisie-temps.route';
 import {SaisieTempsComponent} from './saisie-temps.component';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AccordionModule, RatingModule, CalendarModule, ButtonModule } from 'primeng/primeng';
+
 @NgModule({
     imports: [
         GestLrSharedModule,
-        RouterModule.forChild([ saisieTempsRoute ])
+        RouterModule.forChild([ saisieTempsRoute ]),
+        BrowserAnimationsModule,
+        AccordionModule,
+        RatingModule,
+        CalendarModule,
+        ButtonModule
     ],
     declarations: [
         SaisieTempsComponent,
