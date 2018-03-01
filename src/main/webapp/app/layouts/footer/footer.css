@@ -1,0 +1,23 @@
+.lr-footer {
+    background-color: #353d47;
+    padding: 1em 1em 1.5em 1em;
+    margin-top: 1.5em;
+    color: white;
+}
+
+.lr-footer-align-parent {
+    position: relative;
+}
+.lr-footer-align-child {
+    position: absolute;
+    top: 60%; /* poussé de la moitié de hauteur du référent */
+    transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+    /*left: 50%; !* poussé de la moitié de hauteur du référent *!*/
+    /*transform: translateX(-50%); !* tiré de la moitié de sa propre hauteur *!*/
+    text-align: center !important;
+}
+
+.lr-footer-logo-position {
+    padding-right: 2em;
+    text-align: right;
+}
