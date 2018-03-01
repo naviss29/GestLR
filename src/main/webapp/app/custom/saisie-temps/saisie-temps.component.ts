@@ -3,9 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'jhi-saisie-temps',
   templateUrl: './saisie-temps.component.html',
-  styles: []
+  styleUrls: ['saisie-temps.css']
 })
 export class SaisieTempsComponent implements OnInit {
+
+    /* Initialisation des variables */
+    commentaires: string;
 
     date1: Date;
     date2: Date;

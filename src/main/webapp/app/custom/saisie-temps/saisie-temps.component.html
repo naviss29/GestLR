@@ -1,16 +1,27 @@
-<p>
-  saisie-temps works!
-</p>
 
-<p-button label="Click" ></p-button>
-<button pButton type="button" label="Click 2"></button>
+<div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2>Rapport d'Activité</h2>
 
-<br/>
+            <h5>Saisie des Imputations</h5>
 
-<div class="ui-g ui-fluid">
-    <div class="ui-g-12 ui-md-4">
-        <h3>Button Bar</h3>
-        <p-calendar [(ngModel)]="date1" showButtonBar="true"></p-calendar>
+            <div>TODO - Rajouter tableau de saisie des imputations :</div>
+            <div>
+                <ul>
+                    <li>Sous quel format ?</li>
+                </ul>
+            </div>
+
+            <h5>Commentaires</h5>
+            <div class="force-width-100 pb-2">
+                <textarea class="force-width-100" [rows]="4" pInputTextarea [(ngModel)]="commentaires"></textarea>
+            </div>
+
+            <div class="pt-2">
+                <button pButton type="button" label="Enregistrer"></button>
+                <button pButton type="button" label="Valider"></button>
+            </div>
+        </div>
     </div>
 </div>
-<p-calendar [(ngModel)]="date2" [inline]="true"></p-calendar>

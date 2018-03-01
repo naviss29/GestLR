@@ -8,6 +8,7 @@ import {SaisieTempsComponent} from './saisie-temps.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AccordionModule, RatingModule, CalendarModule, ButtonModule } from 'primeng/primeng';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import {AccordionModule, RatingModule, CalendarModule, ButtonModule } from 'prim
         AccordionModule,
         RatingModule,
         CalendarModule,
-        ButtonModule
+        ButtonModule,
+        InputTextareaModule
     ],
     declarations: [
         SaisieTempsComponent,
