@@ -1,3 +1,8 @@
 .force-width-100 {
     width:100% !important;
 }
+
+.pink-lr {
+    background-color: #D73A8E !important;
+    border-color: #D73A8E !important;
+}
