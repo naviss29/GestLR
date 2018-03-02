@@ -31,3 +31,8 @@ only screen and (                min-resolution: 2dppx) {
 .card-pointer-hand {
     cursor: pointer;
 }
+
+.padding-to-margin-5 {
+    padding: 0 !important;
+    margin: 6px !important;
+}
