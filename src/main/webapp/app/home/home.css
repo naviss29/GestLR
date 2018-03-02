@@ -28,3 +28,7 @@ only screen and (                min-resolution: 2dppx) {
     background-color: #D73A8E !important;
     border-color: #D73A8E !important;
 }
+
+.card-content-height {
+    height: 120px;
+}
