@@ -24,8 +24,7 @@ only screen and (                min-resolution: 2dppx) {
     }
 }
 
-.conges {
-    display: inline-block;
-    background: url("../../content/images/logo-grp-lr.png") no-repeat center top;
-    background-size: contain;
+.pink-lr {
+    background-color: #D73A8E !important;
+    border-color: #D73A8E !important;
 }
