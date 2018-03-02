@@ -24,3 +24,8 @@ only screen and (                min-resolution: 2dppx) {
     }
 }
 
+.conges {
+    display: inline-block;
+    background: url("../../content/images/logo-grp-lr.png") no-repeat center top;
+    background-size: contain;
+}
