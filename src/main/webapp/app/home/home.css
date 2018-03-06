@@ -25,7 +25,7 @@ only screen and (                min-resolution: 2dppx) {
 }
 
 .card-content-height {
-    height: 120px;
+    min-height: 150px !important;
 }
 
 .card-pointer-hand {
@@ -35,4 +35,11 @@ only screen and (                min-resolution: 2dppx) {
 .padding-to-margin-5 {
     padding: 0 !important;
     margin: 6px !important;
+}
+
+.custom-card-title {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: .5em;
 }

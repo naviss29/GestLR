@@ -14,6 +14,20 @@
             "follow": "Suivez @java_hipster sur Twitter"
         },
         "like": "Si vous aimez JHipster, donnez nous une étoile sur",
-        "github": "GitHub "
+        "github": "GitHub ",
+        "cards": {
+            "titles": {
+                "conges": "Demande de Congés",
+                "times": "Saisie des Temps",
+                "bill": "Note de Frais",
+                "documents": "Documents"
+            },
+            "labels": {
+                "conges": "Envie de vacances ? Venez nous en informer par ici.",
+                "times": "Quand on arrive à la fin du mois et qu'on doit transmettre ses imputations, c'est par ici que ça se passe.",
+                "bill": "Pour tout ce qui est relatifs aux notes de frais et à leur remboursement.",
+                "documents": "Besoin de retrouver vos documents ? Nous avons pensé à tout."
+            }
+        }
     }
 }
