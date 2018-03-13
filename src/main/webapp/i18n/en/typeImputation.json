@@ -1,0 +1,23 @@
+
+{
+    "gestLrApp": {
+        "typeImputation" : {
+            "home": {
+                "title": "Type Imputations",
+                "createLabel": "Create a new Type Imputation",
+                "createOrEditLabel": "Create or edit a Type Imputation"
+            },
+            "created": "A new Type Imputation is created with identifier {{ param }}",
+            "updated": "A Type Imputation is updated with identifier {{ param }}",
+            "deleted": "A Type Imputation is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Type Imputation {{ id }}?"
+            },
+            "detail": {
+                "title": "Type Imputation"
+            },
+            "code": "Code",
+            "libelle": "Libelle"
+        }
+    }
+}

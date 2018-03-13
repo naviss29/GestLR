@@ -1,0 +1,13 @@
+id;code;libelle
+1;MISSION;Mission
+2;WEEK_ENDS;Week-ends
+3;FERIES;Jours fériés
+4;FORMATION;Formation
+5;CP;Congés payés
+6;RTT_S;RTT Salarié
+7;RTT_E;RTT Employeur
+8;CP_SS;Congés sans solde
+9;CP_EV_F;Congés évènement familial
+10;MALADIE;Maladie
+11;RECUP;Récupération
+12;INTERCO;Intercontrat

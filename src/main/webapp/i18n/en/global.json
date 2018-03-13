@@ -8,6 +8,11 @@
             "entities": {
                 "main": "Entities",
                 "typeConge": "Type Conge",
+                "periode": "Periode",
+                "commentaire": "Commentaire",
+                "imputation": "Imputation",
+                "typeImputation": "Type Imputation",
+                "signature": "Signature",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

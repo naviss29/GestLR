@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "periode",
+            "otherEntityName": "periode",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "type",
+            "otherEntityName": "typeImputation",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "imputation"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "client",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "duree",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20180313143958",
+    "entityTableName": "imputation",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

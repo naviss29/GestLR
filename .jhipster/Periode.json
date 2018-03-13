@@ -1,0 +1,56 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "imputation",
+            "otherEntityName": "imputation",
+            "otherEntityRelationshipName": "periode"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "commentaire",
+            "otherEntityName": "commentaire",
+            "otherEntityRelationshipName": "periode"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "signature",
+            "otherEntityName": "signature",
+            "otherEntityRelationshipName": "periode"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "annee",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "mois",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "echeance",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "statut",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180313143956",
+    "entityTableName": "periode",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

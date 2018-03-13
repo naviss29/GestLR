@@ -1,0 +1,76 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="mySignatureLabel" jhiTranslate="gestLrApp.signature.home.createOrEditLabel">Create or edit a Signature</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!signature.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="signature.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestLrApp.signature.nomSignataire" for="field_nomSignataire">Nom Signataire</label>
+            <input type="text" class="form-control" name="nomSignataire" id="field_nomSignataire"
+                [(ngModel)]="signature.nomSignataire" required/>
+            <div [hidden]="!(editForm.controls.nomSignataire?.dirty && editForm.controls.nomSignataire?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nomSignataire?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestLrApp.signature.prenomSignataire" for="field_prenomSignataire">Prenom Signataire</label>
+            <input type="text" class="form-control" name="prenomSignataire" id="field_prenomSignataire"
+                [(ngModel)]="signature.prenomSignataire" required/>
+            <div [hidden]="!(editForm.controls.prenomSignataire?.dirty && editForm.controls.prenomSignataire?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.prenomSignataire?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestLrApp.signature.emailSignataire" for="field_emailSignataire">Email Signataire</label>
+            <input type="text" class="form-control" name="emailSignataire" id="field_emailSignataire"
+                [(ngModel)]="signature.emailSignataire" required/>
+            <div [hidden]="!(editForm.controls.emailSignataire?.dirty && editForm.controls.emailSignataire?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.emailSignataire?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestLrApp.signature.statut" for="field_statut">Statut</label>
+            <input type="text" class="form-control" name="statut" id="field_statut"
+                [(ngModel)]="signature.statut" required/>
+            <div [hidden]="!(editForm.controls.statut?.dirty && editForm.controls.statut?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.statut?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestLrApp.signature.periode" for="field_periode">Periode</label>
+            <select class="form-control" id="field_periode" name="periode" [(ngModel)]="signature.periodeId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="periodeOption.id" *ngFor="let periodeOption of periodes; trackBy: trackPeriodeById">{{periodeOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

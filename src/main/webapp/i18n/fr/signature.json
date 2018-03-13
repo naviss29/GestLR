@@ -1,0 +1,26 @@
+
+{
+    "gestLrApp": {
+        "signature" : {
+            "home": {
+                "title": "Signatures",
+                "createLabel": "Créer un nouveau Signature",
+                "createOrEditLabel": "Créer ou éditer un Signature"
+            },
+            "created": "Un nouveau Signature a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Signature avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Signature avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Signature {{ id }} ?"
+            },
+            "detail": {
+                "title": "Signature"
+            },
+            "nomSignataire": "Nom Signataire",
+            "prenomSignataire": "Prenom Signataire",
+            "emailSignataire": "Email Signataire",
+            "statut": "Statut",
+            "periode": "Periode"
+        }
+    }
+}

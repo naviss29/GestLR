@@ -1,0 +1,44 @@
+
+<div *ngIf="signature">
+    <h2><span jhiTranslate="gestLrApp.signature.detail.title">Signature</span> {{signature.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gestLrApp.signature.nomSignataire">Nom Signataire</span></dt>
+        <dd>
+            <span>{{signature.nomSignataire}}</span>
+        </dd>
+        <dt><span jhiTranslate="gestLrApp.signature.prenomSignataire">Prenom Signataire</span></dt>
+        <dd>
+            <span>{{signature.prenomSignataire}}</span>
+        </dd>
+        <dt><span jhiTranslate="gestLrApp.signature.emailSignataire">Email Signataire</span></dt>
+        <dd>
+            <span>{{signature.emailSignataire}}</span>
+        </dd>
+        <dt><span jhiTranslate="gestLrApp.signature.statut">Statut</span></dt>
+        <dd>
+            <span>{{signature.statut}}</span>
+        </dd>
+        <dt><span jhiTranslate="gestLrApp.signature.periode">Periode</span></dt>
+        <dd>
+            <div *ngIf="signature.periodeId">
+                <a [routerLink]="['/periode', signature.periodeId]">{{signature.periodeId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'signature/'+ signature.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

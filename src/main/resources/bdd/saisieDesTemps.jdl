@@ -1,0 +1,44 @@
+// Entités
+entity Periode {
+	annee Integer required,
+    mois Integer required,
+    echeance Instant,
+    statut String required
+}
+
+entity Commentaire {
+	libelle String required,
+    dateSaisie Instant required
+}
+
+entity Imputation {
+	client String required,
+	duree Float
+}
+
+entity TypeImputation {
+	code String required,
+	libelle String required
+}
+
+entity Signature {
+	nomSignataire String required,
+    prenomSignataire String required,
+	emailSignataire String required,
+	statut String required
+}
+
+// relations
+relationship OneToOne {
+	Imputation{type} to TypeImputation
+}
+
+relationship OneToMany {
+	Periode{imputation} to Imputation,
+	Periode{commentaire} to	Commentaire,
+    Periode{signature} to Signature
+}
+
+dto * with mapstruct
+service all with serviceImpl
+

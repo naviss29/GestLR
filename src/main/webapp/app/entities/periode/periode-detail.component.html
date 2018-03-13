@@ -1,0 +1,38 @@
+
+<div *ngIf="periode">
+    <h2><span jhiTranslate="gestLrApp.periode.detail.title">Periode</span> {{periode.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gestLrApp.periode.annee">Annee</span></dt>
+        <dd>
+            <span>{{periode.annee}}</span>
+        </dd>
+        <dt><span jhiTranslate="gestLrApp.periode.mois">Mois</span></dt>
+        <dd>
+            <span>{{periode.mois}}</span>
+        </dd>
+        <dt><span jhiTranslate="gestLrApp.periode.echeance">Echeance</span></dt>
+        <dd>
+            <span>{{periode.echeance | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gestLrApp.periode.statut">Statut</span></dt>
+        <dd>
+            <span>{{periode.statut}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'periode/'+ periode.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

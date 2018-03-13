@@ -1,0 +1,25 @@
+
+{
+    "gestLrApp": {
+        "imputation" : {
+            "home": {
+                "title": "Imputations",
+                "createLabel": "Create a new Imputation",
+                "createOrEditLabel": "Create or edit a Imputation"
+            },
+            "created": "A new Imputation is created with identifier {{ param }}",
+            "updated": "A Imputation is updated with identifier {{ param }}",
+            "deleted": "A Imputation is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Imputation {{ id }}?"
+            },
+            "detail": {
+                "title": "Imputation"
+            },
+            "client": "Client",
+            "duree": "Duree",
+            "periode": "Periode",
+            "type": "Type"
+        }
+    }
+}

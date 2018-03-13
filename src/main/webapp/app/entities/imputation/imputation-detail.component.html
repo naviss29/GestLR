@@ -1,0 +1,42 @@
+
+<div *ngIf="imputation">
+    <h2><span jhiTranslate="gestLrApp.imputation.detail.title">Imputation</span> {{imputation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gestLrApp.imputation.client">Client</span></dt>
+        <dd>
+            <span>{{imputation.client}}</span>
+        </dd>
+        <dt><span jhiTranslate="gestLrApp.imputation.duree">Duree</span></dt>
+        <dd>
+            <span>{{imputation.duree}}</span>
+        </dd>
+        <dt><span jhiTranslate="gestLrApp.imputation.periode">Periode</span></dt>
+        <dd>
+            <div *ngIf="imputation.periodeId">
+                <a [routerLink]="['/periode', imputation.periodeId]">{{imputation.periodeId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gestLrApp.imputation.type">Type</span></dt>
+        <dd>
+            <div *ngIf="imputation.typeId">
+                <a [routerLink]="['/type-imputation', imputation.typeId]">{{imputation.typeId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'imputation/'+ imputation.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
