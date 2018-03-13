@@ -19,6 +19,9 @@ public class CommentaireDTO implements Serializable {
     private String libelle;
 
     @NotNull
+    private String auteur;
+
+    @NotNull
     private Instant dateSaisie;
 
     private Long periodeId;
@@ -37,6 +40,14 @@ public class CommentaireDTO implements Serializable {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+
+    public String getAuteur() {
+        return auteur;
+    }
+
+    public void setAuteur(String auteur) {
+        this.auteur = auteur;
     }
 
     public Instant getDateSaisie() {
@@ -81,6 +92,7 @@ public class CommentaireDTO implements Serializable {
         return "CommentaireDTO{" +
             "id=" + getId() +
             ", libelle='" + getLibelle() + "'" +
+            ", auteur='" + getAuteur() + "'" +
             ", dateSaisie='" + getDateSaisie() + "'" +
             "}";
     }

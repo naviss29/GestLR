@@ -7,7 +7,7 @@ export class Signature implements BaseEntity {
         public prenomSignataire?: string,
         public emailSignataire?: string,
         public statut?: string,
-        public periodeId?: number,
+        public periodeId?: number
     ) {
     }
 }

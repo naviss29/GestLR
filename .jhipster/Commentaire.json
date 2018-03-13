@@ -17,6 +17,13 @@
             ]
         },
         {
+            "fieldName": "auteur",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
             "fieldName": "dateSaisie",
             "fieldType": "Instant",
             "fieldValidateRules": [

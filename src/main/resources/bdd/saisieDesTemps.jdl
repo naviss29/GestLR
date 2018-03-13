@@ -8,6 +8,7 @@ entity Periode {
 
 entity Commentaire {
 	libelle String required,
+	auteur String required,
     dateSaisie Instant required
 }
 

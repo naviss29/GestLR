@@ -46,6 +46,9 @@ public class CommentaireResourceIntTest {
     private static final String DEFAULT_LIBELLE = "AAAAAAAAAA";
     private static final String UPDATED_LIBELLE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_AUTEUR = "AAAAAAAAAA";
+    private static final String UPDATED_AUTEUR = "BBBBBBBBBB";
+
     private static final Instant DEFAULT_DATE_SAISIE = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DATE_SAISIE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
@@ -94,6 +97,7 @@ public class CommentaireResourceIntTest {
     public static Commentaire createEntity(EntityManager em) {
         Commentaire commentaire = new Commentaire()
             .libelle(DEFAULT_LIBELLE)
+            .auteur(DEFAULT_AUTEUR)
             .dateSaisie(DEFAULT_DATE_SAISIE);
         return commentaire;
     }
@@ -120,6 +124,7 @@ public class CommentaireResourceIntTest {
         assertThat(commentaireList).hasSize(databaseSizeBeforeCreate + 1);
         Commentaire testCommentaire = commentaireList.get(commentaireList.size() - 1);
         assertThat(testCommentaire.getLibelle()).isEqualTo(DEFAULT_LIBELLE);
+        assertThat(testCommentaire.getAuteur()).isEqualTo(DEFAULT_AUTEUR);
         assertThat(testCommentaire.getDateSaisie()).isEqualTo(DEFAULT_DATE_SAISIE);
     }
 
@@ -164,6 +169,25 @@ public class CommentaireResourceIntTest {
 
     @Test
     @Transactional
+    public void checkAuteurIsRequired() throws Exception {
+        int databaseSizeBeforeTest = commentaireRepository.findAll().size();
+        // set the field null
+        commentaire.setAuteur(null);
+
+        // Create the Commentaire, which fails.
+        CommentaireDTO commentaireDTO = commentaireMapper.toDto(commentaire);
+
+        restCommentaireMockMvc.perform(post("/api/commentaires")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(commentaireDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Commentaire> commentaireList = commentaireRepository.findAll();
+        assertThat(commentaireList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void checkDateSaisieIsRequired() throws Exception {
         int databaseSizeBeforeTest = commentaireRepository.findAll().size();
         // set the field null
@@ -193,6 +217,7 @@ public class CommentaireResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(commentaire.getId().intValue())))
             .andExpect(jsonPath("$.[*].libelle").value(hasItem(DEFAULT_LIBELLE.toString())))
+            .andExpect(jsonPath("$.[*].auteur").value(hasItem(DEFAULT_AUTEUR.toString())))
             .andExpect(jsonPath("$.[*].dateSaisie").value(hasItem(DEFAULT_DATE_SAISIE.toString())));
     }
 
@@ -208,6 +233,7 @@ public class CommentaireResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(commentaire.getId().intValue()))
             .andExpect(jsonPath("$.libelle").value(DEFAULT_LIBELLE.toString()))
+            .andExpect(jsonPath("$.auteur").value(DEFAULT_AUTEUR.toString()))
             .andExpect(jsonPath("$.dateSaisie").value(DEFAULT_DATE_SAISIE.toString()));
     }
 
@@ -232,6 +258,7 @@ public class CommentaireResourceIntTest {
         em.detach(updatedCommentaire);
         updatedCommentaire
             .libelle(UPDATED_LIBELLE)
+            .auteur(UPDATED_AUTEUR)
             .dateSaisie(UPDATED_DATE_SAISIE);
         CommentaireDTO commentaireDTO = commentaireMapper.toDto(updatedCommentaire);
 
@@ -245,6 +272,7 @@ public class CommentaireResourceIntTest {
         assertThat(commentaireList).hasSize(databaseSizeBeforeUpdate);
         Commentaire testCommentaire = commentaireList.get(commentaireList.size() - 1);
         assertThat(testCommentaire.getLibelle()).isEqualTo(UPDATED_LIBELLE);
+        assertThat(testCommentaire.getAuteur()).isEqualTo(UPDATED_AUTEUR);
         assertThat(testCommentaire.getDateSaisie()).isEqualTo(UPDATED_DATE_SAISIE);
     }
 

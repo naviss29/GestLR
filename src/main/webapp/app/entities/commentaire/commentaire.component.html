@@ -18,6 +18,7 @@
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="gestLrApp.commentaire.libelle">Libelle</span></th>
+            <th><span jhiTranslate="gestLrApp.commentaire.auteur">Auteur</span></th>
             <th><span jhiTranslate="gestLrApp.commentaire.dateSaisie">Date Saisie</span></th>
             <th><span jhiTranslate="gestLrApp.commentaire.periode">Periode</span></th>
             <th></th>
@@ -27,6 +28,7 @@
             <tr *ngFor="let commentaire of commentaires ;trackBy: trackId">
                 <td><a [routerLink]="['../commentaire', commentaire.id ]">{{commentaire.id}}</a></td>
                 <td>{{commentaire.libelle}}</td>
+                <td>{{commentaire.auteur}}</td>
                 <td>{{commentaire.dateSaisie | date:'medium'}}</td>
                 <td>
                     <div *ngIf="commentaire.periodeId">

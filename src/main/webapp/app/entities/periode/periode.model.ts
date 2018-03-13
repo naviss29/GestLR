@@ -9,7 +9,7 @@ export class Periode implements BaseEntity {
         public statut?: string,
         public imputations?: BaseEntity[],
         public commentaires?: BaseEntity[],
-        public signatures?: BaseEntity[],
+        public signatures?: BaseEntity[]
     ) {
     }
 }

@@ -17,6 +17,7 @@
                 "title": "Commentaire"
             },
             "libelle": "Libelle",
+            "auteur": "Auteur",
             "dateSaisie": "Date Saisie",
             "periode": "Periode"
         }

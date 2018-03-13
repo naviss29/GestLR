@@ -29,6 +29,10 @@ public class Commentaire implements Serializable {
     private String libelle;
 
     @NotNull
+    @Column(name = "auteur", nullable = false)
+    private String auteur;
+
+    @NotNull
     @Column(name = "date_saisie", nullable = false)
     private Instant dateSaisie;
 
@@ -55,6 +59,19 @@ public class Commentaire implements Serializable {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+
+    public String getAuteur() {
+        return auteur;
+    }
+
+    public Commentaire auteur(String auteur) {
+        this.auteur = auteur;
+        return this;
+    }
+
+    public void setAuteur(String auteur) {
+        this.auteur = auteur;
     }
 
     public Instant getDateSaisie() {
@@ -109,6 +126,7 @@ public class Commentaire implements Serializable {
         return "Commentaire{" +
             "id=" + getId() +
             ", libelle='" + getLibelle() + "'" +
+            ", auteur='" + getAuteur() + "'" +
             ", dateSaisie='" + getDateSaisie() + "'" +
             "}";
     }

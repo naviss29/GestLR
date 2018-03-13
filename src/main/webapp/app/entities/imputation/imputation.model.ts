@@ -6,7 +6,7 @@ export class Imputation implements BaseEntity {
         public client?: string,
         public duree?: number,
         public periodeId?: number,
-        public typeId?: number,
+        public typeId?: number
     ) {
     }
 }

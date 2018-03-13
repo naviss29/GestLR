@@ -26,6 +26,10 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="auteur" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
             <column name="date_saisie" type="timestamp">
                 <constraints nullable="false" />
             </column>

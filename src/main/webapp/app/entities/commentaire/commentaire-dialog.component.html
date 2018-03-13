@@ -24,6 +24,17 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestLrApp.commentaire.auteur" for="field_auteur">Auteur</label>
+            <input type="text" class="form-control" name="auteur" id="field_auteur"
+                [(ngModel)]="commentaire.auteur" required/>
+            <div [hidden]="!(editForm.controls.auteur?.dirty && editForm.controls.auteur?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.auteur?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="gestLrApp.commentaire.dateSaisie" for="field_dateSaisie">Date Saisie</label>
             <div class="d-flex">
                 <input id="field_dateSaisie" type="datetime-local" class="form-control" name="dateSaisie" [(ngModel)]="commentaire.dateSaisie"
