@@ -1,3 +1,10 @@
+/* Overriding styles */
+h5 {
+    font-weight:bold;
+    color: #D73A8E !important;
+}
+
+/* Custom styles */
 .force-width-100 {
     width:100% !important;
 }
@@ -5,4 +12,25 @@
 .pink-lr {
     background-color: #D73A8E !important;
     border-color: #D73A8E !important;
+}
+
+.text-heavy-pink-lr {
+    color: #d73a8e;
+}
+
+.text-medium-pink-lr {
+    color: rgba(215, 58, 142, 0.75);
+}
+
+.text-light-pink-lr {
+    color: rgba(215, 58, 142, 0.5);
+}
+
+
+.bloc-commentaire {
+    padding-left:15px;
+}
+
+.date-commentaire {
+    font-weight:bold;
 }

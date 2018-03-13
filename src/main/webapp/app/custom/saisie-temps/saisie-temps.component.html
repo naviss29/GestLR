@@ -1,10 +1,9 @@
-
 <div>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h2>Rapport d'Activité</h2>
 
-            <h5>Saisie des Imputations</h5>
+            <h5 class="pt-3 pb-2">Saisie des Imputations</h5>
 
             <div>TODO - Rajouter tableau de saisie des imputations :</div>
             <div>
@@ -13,11 +12,22 @@
                 </ul>
             </div>
 
-            <h5>Commentaires</h5>
+            <hr>
+            <h5 class="pt-3 pb-2">Commentaires</h5>
             <div class="force-width-100 pb-2">
                 <textarea class="force-width-100" [rows]="4" pInputTextarea [(ngModel)]="commentaires"></textarea>
             </div>
 
+            <h5 class="pt-3 pb-2">Historique des Commentaires</h5>
+            <div class="force-width-100 pb-2">
+                <div  *ngFor="let commentaireHistorise of historiqueCommentaires | orderBy:'id':true" class="bloc-commentaire">
+                    <div class="date-commentaire">
+                        Par <span class="text-medium-pink-lr">{{ commentaireHistorise.auteur }}</span> le <span class="text-medium-pink-lr">{{ commentaireHistorise.dateSaisie }}</span>
+                    </div>
+                    <div>{{ commentaireHistorise.libelle }}</div>
+                    <br>
+                </div>
+            </div>
             <div class="pt-2">
                 <button pButton type="button" class="pink-lr" label="Enregistrer"></button>
                 <button pButton type="button" class="pink-lr" label="Valider"></button>

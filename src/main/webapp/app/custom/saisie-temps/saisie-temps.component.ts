@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Commentaire } from '../../entities/commentaire/commentaire.model';
+
 @Component({
   selector: 'jhi-saisie-temps',
   templateUrl: './saisie-temps.component.html',
@@ -9,6 +11,7 @@ export class SaisieTempsComponent implements OnInit {
 
     /* Initialisation des variables */
     commentaires: string;
+    historiqueCommentaires: Commentaire[];
 
     date1: Date;
     date2: Date;
@@ -17,6 +20,8 @@ export class SaisieTempsComponent implements OnInit {
     minDate: Date;
     maxDate: Date;
     invalidDates: Array<Date>;
+
+    constructor() {}
 
     ngOnInit() {
 
@@ -37,6 +42,11 @@ export class SaisieTempsComponent implements OnInit {
         const invalidDate = new Date();
         invalidDate.setDate(today.getDate() - 1);
         this.invalidDates = [today, invalidDate];
+
+        this.historiqueCommentaires = [
+            {id: 1, libelle: 'Exemple de commentaire historisé 1', dateSaisie: 'Date du jour 1', auteur: 'Pascal'},
+            {id: 2, libelle: 'Exemple de commentaire historisé 2', dateSaisie: 'Date du jour 2', auteur: 'Alan'}
+        ];
     }
 
 }
