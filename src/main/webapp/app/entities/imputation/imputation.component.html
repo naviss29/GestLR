@@ -17,6 +17,7 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gestLrApp.imputation.jour">Jour</span></th>
             <th><span jhiTranslate="gestLrApp.imputation.client">Client</span></th>
             <th><span jhiTranslate="gestLrApp.imputation.duree">Duree</span></th>
             <th><span jhiTranslate="gestLrApp.imputation.periode">Periode</span></th>
@@ -27,6 +28,7 @@
             <tbody>
             <tr *ngFor="let imputation of imputations ;trackBy: trackId">
                 <td><a [routerLink]="['../imputation', imputation.id ]">{{imputation.id}}</a></td>
+                <td>{{imputation.jour}}</td>
                 <td>{{imputation.client}}</td>
                 <td>{{imputation.duree}}</td>
                 <td>

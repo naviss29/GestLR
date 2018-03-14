@@ -209,3 +209,37 @@ ui bootstrap tweaks
  }
 
 /* jhipster-needle-css-add-main JHipster will add new css style */
+
+/*************************/
+/* Styles maison globaux */
+/*************************/
+h5 {
+    font-weight:bold;
+    color: #D73A8E !important;
+}
+
+.text-heavy-pink-lr {
+    color: rgba(215, 58, 142, 1) !important;
+}
+
+.text-medium-pink-lr {
+    color: rgba(215, 58, 142, 0.75) !important;
+}
+
+.text-light-pink-lr {
+    color: rgba(215, 58, 142, 0.5) !important;
+}
+
+.pink-lr {
+    background-color: #D73A8E !important;
+    border-color: #D73A8E !important;
+}
+
+.temps-header {
+    font-weight: bold !important;
+}
+.temps-header-we-ferie {
+    font-weight: bold !important;
+    color: rgba(215, 58, 142, 0.75) !important;
+    background-color: rgba(125,125,125,0.25) !important;
+}

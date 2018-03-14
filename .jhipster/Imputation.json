@@ -18,6 +18,13 @@
     ],
     "fields": [
         {
+            "fieldName": "jour",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
             "fieldName": "client",
             "fieldType": "String",
             "fieldValidateRules": [

@@ -9,6 +9,7 @@ import {SaisieTempsComponent} from './saisie-temps.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AccordionModule, RatingModule, CalendarModule, ButtonModule } from 'primeng/primeng';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import {DataTableModule} from 'primeng/datatable';
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
         RatingModule,
         CalendarModule,
         ButtonModule,
-        InputTextareaModule
+        InputTextareaModule,
+        DataTableModule
     ],
     declarations: [
         SaisieTempsComponent,

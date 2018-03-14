@@ -15,6 +15,9 @@ public class ImputationDTO implements Serializable {
     private Long id;
 
     @NotNull
+    private Integer jour;
+
+    @NotNull
     private String client;
 
     private Float duree;
@@ -29,6 +32,14 @@ public class ImputationDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getJour() {
+        return jour;
+    }
+
+    public void setJour(Integer jour) {
+        this.jour = jour;
     }
 
     public String getClient() {
@@ -88,6 +99,7 @@ public class ImputationDTO implements Serializable {
     public String toString() {
         return "ImputationDTO{" +
             "id=" + getId() +
+            ", jour=" + getJour() +
             ", client='" + getClient() + "'" +
             ", duree=" + getDuree() +
             "}";

@@ -24,6 +24,10 @@ public class Imputation implements Serializable {
     private Long id;
 
     @NotNull
+    @Column(name = "jour", nullable = false)
+    private Integer jour;
+
+    @NotNull
     @Column(name = "client", nullable = false)
     private String client;
 
@@ -44,6 +48,19 @@ public class Imputation implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getJour() {
+        return jour;
+    }
+
+    public Imputation jour(Integer jour) {
+        this.jour = jour;
+        return this;
+    }
+
+    public void setJour(Integer jour) {
+        this.jour = jour;
     }
 
     public String getClient() {
@@ -123,6 +140,7 @@ public class Imputation implements Serializable {
     public String toString() {
         return "Imputation{" +
             "id=" + getId() +
+            ", jour=" + getJour() +
             ", client='" + getClient() + "'" +
             ", duree=" + getDuree() +
             "}";

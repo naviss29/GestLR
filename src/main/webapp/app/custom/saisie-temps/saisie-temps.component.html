@@ -1,21 +1,35 @@
 <div>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <h2>Rapport d'Activité</h2>
 
             <h5 class="pt-3 pb-2">Saisie des Imputations</h5>
 
-            <div>TODO - Rajouter tableau de saisie des imputations :</div>
             <div>
-                <ul>
-                    <li>Sous quel format ?</li>
-                </ul>
-            </div>
+                <p-dataTable [value]="mapImputations" [responsive]="true" [stacked]="stacked" rowGroupMode="subheader">
+                    <p-header>Imputations</p-header>
+                    <p-column header="{{journee.libelleJour}}"
+                                  *ngFor="let journee of calendrierImputations | orderBy:'jour'"
+                                  styleClass="{{(journee.type=='WE' || journee.type=='FERIE') ? 'temps-header-we-ferie' : 'temps-header'}}"></p-column>
 
-            <hr>
+                    <ng-template pTemplate="rowgroupheader" let-rowData>{{rowData['type']}}</ng-template>
+                    <!--<p-column [field]="imputation.jour" *ngFor="let imputation of imputations | orderBy:'jour'"></p-column>-->
+
+                    <!--<p-column *ngFor="let imputation of imputations" [field]="imputation.jour">-->
+                        <!--<ng-template let-row="rowData" pTemplate="body">-->
+                            <!--<span>{{row[jour]}}</span>-->
+                        <!--</ng-template>-->
+                    <!--</p-column>-->
+
+                </p-dataTable>
+
+            </div>
+        </div>
+
+        <div class="col-md-8">
             <h5 class="pt-3 pb-2">Commentaires</h5>
             <div class="force-width-100 pb-2">
-                <textarea class="force-width-100" [rows]="4" pInputTextarea [(ngModel)]="commentaires"></textarea>
+                <textarea class="force-width-100" [rows]="4" pInputTextarea [(ngModel)]="commentaire"></textarea>
             </div>
 
             <h5 class="pt-3 pb-2">Historique des Commentaires</h5>

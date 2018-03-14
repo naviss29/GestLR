@@ -41,6 +41,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = GestLrApp.class)
 public class ImputationResourceIntTest {
 
+    private static final Integer DEFAULT_JOUR = 1;
+    private static final Integer UPDATED_JOUR = 2;
+
     private static final String DEFAULT_CLIENT = "AAAAAAAAAA";
     private static final String UPDATED_CLIENT = "BBBBBBBBBB";
 
@@ -91,6 +94,7 @@ public class ImputationResourceIntTest {
      */
     public static Imputation createEntity(EntityManager em) {
         Imputation imputation = new Imputation()
+            .jour(DEFAULT_JOUR)
             .client(DEFAULT_CLIENT)
             .duree(DEFAULT_DUREE);
         return imputation;
@@ -117,6 +121,7 @@ public class ImputationResourceIntTest {
         List<Imputation> imputationList = imputationRepository.findAll();
         assertThat(imputationList).hasSize(databaseSizeBeforeCreate + 1);
         Imputation testImputation = imputationList.get(imputationList.size() - 1);
+        assertThat(testImputation.getJour()).isEqualTo(DEFAULT_JOUR);
         assertThat(testImputation.getClient()).isEqualTo(DEFAULT_CLIENT);
         assertThat(testImputation.getDuree()).isEqualTo(DEFAULT_DUREE);
     }
@@ -139,6 +144,25 @@ public class ImputationResourceIntTest {
         // Validate the Imputation in the database
         List<Imputation> imputationList = imputationRepository.findAll();
         assertThat(imputationList).hasSize(databaseSizeBeforeCreate);
+    }
+
+    @Test
+    @Transactional
+    public void checkJourIsRequired() throws Exception {
+        int databaseSizeBeforeTest = imputationRepository.findAll().size();
+        // set the field null
+        imputation.setJour(null);
+
+        // Create the Imputation, which fails.
+        ImputationDTO imputationDTO = imputationMapper.toDto(imputation);
+
+        restImputationMockMvc.perform(post("/api/imputations")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(imputationDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Imputation> imputationList = imputationRepository.findAll();
+        assertThat(imputationList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -171,6 +195,7 @@ public class ImputationResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(imputation.getId().intValue())))
+            .andExpect(jsonPath("$.[*].jour").value(hasItem(DEFAULT_JOUR)))
             .andExpect(jsonPath("$.[*].client").value(hasItem(DEFAULT_CLIENT.toString())))
             .andExpect(jsonPath("$.[*].duree").value(hasItem(DEFAULT_DUREE.doubleValue())));
     }
@@ -186,6 +211,7 @@ public class ImputationResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(imputation.getId().intValue()))
+            .andExpect(jsonPath("$.jour").value(DEFAULT_JOUR))
             .andExpect(jsonPath("$.client").value(DEFAULT_CLIENT.toString()))
             .andExpect(jsonPath("$.duree").value(DEFAULT_DUREE.doubleValue()));
     }
@@ -210,6 +236,7 @@ public class ImputationResourceIntTest {
         // Disconnect from session so that the updates on updatedImputation are not directly saved in db
         em.detach(updatedImputation);
         updatedImputation
+            .jour(UPDATED_JOUR)
             .client(UPDATED_CLIENT)
             .duree(UPDATED_DUREE);
         ImputationDTO imputationDTO = imputationMapper.toDto(updatedImputation);
@@ -223,6 +250,7 @@ public class ImputationResourceIntTest {
         List<Imputation> imputationList = imputationRepository.findAll();
         assertThat(imputationList).hasSize(databaseSizeBeforeUpdate);
         Imputation testImputation = imputationList.get(imputationList.size() - 1);
+        assertThat(testImputation.getJour()).isEqualTo(UPDATED_JOUR);
         assertThat(testImputation.getClient()).isEqualTo(UPDATED_CLIENT);
         assertThat(testImputation.getDuree()).isEqualTo(UPDATED_DUREE);
     }

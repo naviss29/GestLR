@@ -16,6 +16,7 @@
             "detail": {
                 "title": "Imputation"
             },
+            "jour": "Jour",
             "client": "Client",
             "duree": "Duree",
             "periode": "Periode",
