@@ -95,8 +95,15 @@ export class SaisieTempsComponent implements OnInit {
             {id: 30, jour: 30, client: 'Arkea'}
         ];
 
-        this.mapImputations = [
-            {type: 'MISSION', imputations: this.journees}
-        ];
+        this.mapImputations = [];
+    }
+
+    addLigne(): void {
+        const nouvelleLigne = {type: 'TST', imputations: this.journees};
+        this.mapImputations = [...this.mapImputations, nouvelleLigne];
+    }
+
+    isJourWeOuFerie(imputation: Imputation): boolean {
+        return this.calendrierImputations[imputation.jour - 1].type === 'WE' || this.calendrierImputations[imputation.jour - 1].type === 'FERIE';
     }
 }

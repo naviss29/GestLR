@@ -6,23 +6,45 @@
             <h5 class="pt-3 pb-2">Saisie des Imputations</h5>
 
             <div>
-                <p-dataTable [value]="mapImputations" [responsive]="true" [stacked]="stacked" rowGroupMode="subheader">
-                    <p-header>Imputations</p-header>
-                    <p-column header="{{journee.libelleJour}}"
-                                  *ngFor="let journee of calendrierImputations | orderBy:'jour'"
-                                  styleClass="{{(journee.type=='WE' || journee.type=='FERIE') ? 'temps-header-we-ferie' : 'temps-header'}}"></p-column>
+                <p-table [value]="mapImputations">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th [attr.colspan]="calendrierImputations.length + 2" class="temps-header">Imputations</th>
+                        </tr>
+                        <tr>
+                            <th class="temps-header">Type</th>
+                            <th *ngFor="let journee of calendrierImputations | orderBy:'jour'"
+                                class="{{(journee.type=='WE' || journee.type=='FERIE') ? 'temps-header-we-ferie' : 'temps-header'}}">
+                                {{ journee.jour }}
+                            </th>
+                            <th class="temps-header">Totaux</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData>
+                        <tr>
+                            <td class="col-width-120">{{ rowData.type }}</td>
+                            <td *ngFor="let imputation of rowData.imputations | orderBy:'jour'" pEditableColumn
+                                [ngClass]="isJourWeOuFerie(imputation) ? 'temps-header-we-ferie':'temps-header'">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input"
+                                                 *ngIf="!isJourWeOuFerie(imputation)">
+                                        <input type="text" [(ngModel)]="imputation.duree">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{imputation.duree}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td class="col-width-90">Total</td>
+                        </tr>
+                    </ng-template>
 
-                    <ng-template pTemplate="rowgroupheader" let-rowData>{{rowData['type']}}</ng-template>
-                    <!--<p-column [field]="imputation.jour" *ngFor="let imputation of imputations | orderBy:'jour'"></p-column>-->
-
-                    <!--<p-column *ngFor="let imputation of imputations" [field]="imputation.jour">-->
-                        <!--<ng-template let-row="rowData" pTemplate="body">-->
-                            <!--<span>{{row[jour]}}</span>-->
-                        <!--</ng-template>-->
-                    <!--</p-column>-->
-
-                </p-dataTable>
-
+                    <ng-template pTemplate="summary" let-rowData>
+                        <div style="text-align:left">
+                            <button type="button" pButton icon="fa-plus" (click)="addLigne()" label="Ajouter une ligne"></button>
+                        </div>
+                    </ng-template>
+                </p-table>
             </div>
         </div>
 

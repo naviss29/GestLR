@@ -7,21 +7,18 @@ import {saisieTempsRoute} from './saisie-temps.route';
 import {SaisieTempsComponent} from './saisie-temps.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AccordionModule, RatingModule, CalendarModule, ButtonModule } from 'primeng/primeng';
+import {ButtonModule } from 'primeng/primeng';
 import {InputTextareaModule} from 'primeng/inputtextarea';
-import {DataTableModule} from 'primeng/datatable';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
     imports: [
         GestLrSharedModule,
         RouterModule.forChild([ saisieTempsRoute ]),
         BrowserAnimationsModule,
-        AccordionModule,
-        RatingModule,
-        CalendarModule,
         ButtonModule,
         InputTextareaModule,
-        DataTableModule
+        TableModule
     ],
     declarations: [
         SaisieTempsComponent,
