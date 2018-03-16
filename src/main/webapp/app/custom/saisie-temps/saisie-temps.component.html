@@ -8,41 +8,67 @@
             <div>
                 <p-table [value]="mapImputations">
                     <ng-template pTemplate="header">
-                        <tr>
-                            <th [attr.colspan]="calendrierImputations.length + 2" class="temps-header">Imputations</th>
+                        <tr style="border: solid 1px #CDCDCD">
+                            <th [attr.colspan]="calendrierImputations.length + 2"
+                                class="temps-align-center">
+                                Imputations
+                            </th>
                         </tr>
+
                         <tr>
-                            <th class="temps-header">Type</th>
+                            <th class="temps-align-center col-width-120"
+                                style="border: solid 1px #CDCDCD">Type</th>
+
                             <th *ngFor="let journee of calendrierImputations | orderBy:'jour'"
-                                class="{{(journee.type=='WE' || journee.type=='FERIE') ? 'temps-header-we-ferie' : 'temps-header'}}">
+                                [ngClass]="(journee.type=='WE' || journee.type=='FERIE') ?
+                                            'temps-align-center temps-header-we-ferie' :
+                                            'temps-align-center'"
+                                style="border: solid 1px #CDCDCD">
                                 {{ journee.jour }}
                             </th>
-                            <th class="temps-header">Totaux</th>
+
+                            <th class="temps-align-center"
+                                style="border: solid 1px #CDCDCD">
+                                Totaux
+                            </th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-rowData>
-                        <tr>
-                            <td class="col-width-120">{{ rowData.type }}</td>
+                        <tr class="temps-align-center">
+                            <td class="col-width-120" style="border: solid 1px #CDCDCD;">{{ rowData.type }}</td>
+
                             <td *ngFor="let imputation of rowData.imputations | orderBy:'jour'" pEditableColumn
-                                [ngClass]="isJourWeOuFerie(imputation) ? 'temps-header-we-ferie':'temps-header'">
+                                [ngClass]="isJourWeOuFerie(imputation) ? 'temps-align-center temps-col-we-ferie':''"
+                                style="border: solid 1px #CDCDCD">
+
                                 <p-cellEditor>
                                     <ng-template pTemplate="input"
                                                  *ngIf="!isJourWeOuFerie(imputation)">
-                                        <input type="text" [(ngModel)]="imputation.duree">
+                                        <input type="number" [(ngModel)]="imputation.duree"
+                                               step="0.5" min="0" max="1">
                                     </ng-template>
+
                                     <ng-template pTemplate="output">
                                         {{imputation.duree}}
                                     </ng-template>
                                 </p-cellEditor>
+
                             </td>
-                            <td class="col-width-90">Total</td>
+                            <td class="col-width-90 temps-align-center"
+                                style="border: solid 1px #CDCDCD">{{sommeImputationsByType(rowData.imputations)}}</td>
                         </tr>
                     </ng-template>
 
-                    <ng-template pTemplate="summary" let-rowData>
-                        <div style="text-align:left">
-                            <button type="button" pButton icon="fa-plus" (click)="addLigne()" label="Ajouter une ligne"></button>
-                        </div>
+                    <ng-template pTemplate="footer" let-rowData>
+                        <tr style="border: solid 1px #CDCDCD">
+                            <td [attr.colspan]="10">
+                                <button type="button" pButton icon="fa-plus" (click)="addLigne()" label="Ajouter une ligne"></button>
+                            </td>
+
+                            <td class="temps-text-bold temps-align-right" [attr.colspan]="calendrierImputations.length - 9">Total</td>
+
+                            <td class="temps-align-center">{{ sommeTotaleImputationsByType() }}</td>
+                        </tr>
                     </ng-template>
                 </p-table>
             </div>

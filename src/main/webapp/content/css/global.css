@@ -234,27 +234,3 @@ h5 {
     background-color: #D73A8E !important;
     border-color: #D73A8E !important;
 }
-
-.temps-header {
-    font-weight: bold !important;
-    text-align: center;
-}
-
-.temps-header-we-ferie {
-    font-weight: bold !important;
-    text-align: center;
-    color: rgba(215, 58, 142, 0.75) !important;
-    background-color: rgba(125,125,125,0.25) !important;
-}
-
-.col-width-90 {
-    width: 90px !important;
-    padding-left: 0.5em !important;
-    padding-right: 0.5em !important;
-}
-
-.col-width-120 {
-    width: 120px !important;
-    padding-left: 0.5em !important;
-    padding-right: 0.5em !important;
-}

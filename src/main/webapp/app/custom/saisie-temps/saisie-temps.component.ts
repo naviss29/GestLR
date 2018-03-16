@@ -95,7 +95,8 @@ export class SaisieTempsComponent implements OnInit {
             {id: 30, jour: 30, client: 'Arkea'}
         ];
 
-        this.mapImputations = [];
+        const nouvelleLigne = {type: 'MISSION', imputations: this.journees};
+        this.mapImputations = [nouvelleLigne];
     }
 
     addLigne(): void {
@@ -105,5 +106,48 @@ export class SaisieTempsComponent implements OnInit {
 
     isJourWeOuFerie(imputation: Imputation): boolean {
         return this.calendrierImputations[imputation.jour - 1].type === 'WE' || this.calendrierImputations[imputation.jour - 1].type === 'FERIE';
+    }
+
+    sommeImputationsByType(imputations: Imputation[]): number {
+        let somme: number;
+        for (const imputation of imputations) {
+            if (imputation.duree !== undefined) {
+                if (somme === undefined) {
+                    somme = 0;
+                }
+                somme = this.addition(somme, imputation.duree);
+            }
+        }
+        return somme;
+    }
+
+    sommeTotaleImputationsByType(): number {
+        let sommeTotale: number;
+        for (const imp of this.mapImputations) {
+            if (sommeTotale === undefined) {
+                sommeTotale = 0;
+            }
+            let sousTotal = this.sommeImputationsByType(imp.imputations);
+
+            if (sousTotal === undefined) {
+                sousTotal = 0;
+            }
+            sommeTotale = this.addition(sommeTotale, sousTotal);
+        }
+        return sommeTotale;
+    }
+
+    addition(num1: number, num2: number): number {
+        return (num1 + num2);
+    }
+
+    checkDureeSaisie(duree: number): void {
+        if (duree !== undefined) {
+            if (duree < 0) {
+                duree = 0;
+            } else if (duree > 1) {
+                duree = 1;
+            }
+        }
     }
 }

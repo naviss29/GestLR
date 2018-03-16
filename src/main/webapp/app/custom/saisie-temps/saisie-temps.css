@@ -11,3 +11,45 @@
     font-weight:bold;
 }
 
+/* Overriding styles */
+.ui-table {
+    border: 1px rgb(205, 205, 205) solid;
+}
+
+.temps-text-bold {
+    font-weight: bold !important;
+}
+
+.temps-header-we-ferie {
+    color: rgba(215, 58, 142, 0.75) !important;
+    background-color: rgba(125,125,125,0.25) !important;
+}
+
+.temps-col-we-ferie {
+    color: rgba(215, 58, 142, 0.75) !important;
+    background-color: rgba(125,125,125,0.25) !important;
+}
+
+.col-width-90 {
+    width: 90px !important;
+    padding-left: 0.5em !important;
+    padding-right: 0.5em !important;
+}
+
+.col-width-120 {
+    width: 120px !important;
+    padding-left: 0.5em !important;
+    padding-right: 0.5em !important;
+}
+
+.temps-align-center {
+    text-align: center;
+}
+
+.temps-align-left {
+    text-align: left;
+}
+
+.temps-align-right {
+    text-align: right;
+}

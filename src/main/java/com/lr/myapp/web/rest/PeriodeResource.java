@@ -2,6 +2,7 @@ package com.lr.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.lr.myapp.service.PeriodeService;
+import com.lr.myapp.service.dto.LigneImputationTypeDTO;
 import com.lr.myapp.web.rest.errors.BadRequestAlertException;
 import com.lr.myapp.web.rest.util.HeaderUtil;
 import com.lr.myapp.service.dto.PeriodeDTO;
