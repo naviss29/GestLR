@@ -1,0 +1,25 @@
+{
+    "gestLrApp": {
+        "saisieTemps": {
+            "title": "Saisie des Imputations",
+            "labels": {
+                "imputations": "Imputations",
+                "type": "Type",
+                "total": "Total",
+                "totaux": "Totaux",
+                "commentairesTitle": "Historique des Commentaires",
+                "by": "Par ",
+                "le": " le "
+            },
+            "buttons": {
+                "add": "Ajouter une ligne",
+                "save": "Enregistrer",
+                "validate": "Valider",
+                "cancel": "Annuler"
+            },
+            "dialog": {
+                "title": "Rajout d'une ligne de temps"
+            }
+        }
+    }
+}

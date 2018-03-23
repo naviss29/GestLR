@@ -3,18 +3,24 @@ import { RouterModule } from '@angular/router';
 
 import { GestLrSharedModule } from '../../shared';
 
-import {saisieTempsRoute} from './saisie-temps.route';
-import {SaisieTempsComponent} from './saisie-temps.component';
+import { saisieTempsRoute, saisieTempsPopupRoute } from './saisie-temps.route';
+import { SaisieTempsComponent } from './saisie-temps.component';
+import { SaisieTempsDialogComponent, SaisieTempsPopupComponent } from './saisie-temps-dialog.component';
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ButtonModule } from 'primeng/primeng';
-import {InputTextareaModule} from 'primeng/inputtextarea';
-import {TableModule} from 'primeng/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ButtonModule } from 'primeng/primeng';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TableModule } from 'primeng/table';
+
+const ENTITY_STATES = [
+    ...saisieTempsRoute,
+    ...saisieTempsPopupRoute,
+];
 
 @NgModule({
     imports: [
         GestLrSharedModule,
-        RouterModule.forChild([ saisieTempsRoute ]),
+        RouterModule.forChild(ENTITY_STATES),
         BrowserAnimationsModule,
         ButtonModule,
         InputTextareaModule,
@@ -22,8 +28,12 @@ import {TableModule} from 'primeng/table';
     ],
     declarations: [
         SaisieTempsComponent,
+        SaisieTempsDialogComponent,
+        SaisieTempsPopupComponent
     ],
     entryComponents: [
+        SaisieTempsDialogComponent,
+        SaisieTempsPopupComponent
     ],
     providers: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import { Subscription } from 'rxjs/Subscription';
 
 import { Commentaire } from '../../entities/commentaire/commentaire.model';
 import { Imputation } from '../../entities/imputation/imputation.model';
 import { CalendrierImputation } from '../models/calendrier-imputations.model';
 import { MapImputation } from '../models/map-imputations.model';
+import { TypeImputation, TypeImputationService } from '../../entities/type-imputation/';
 
 @Component({
   selector: 'jhi-saisie-temps',
@@ -18,11 +22,27 @@ export class SaisieTempsComponent implements OnInit {
     calendrierImputations: CalendrierImputation[];
     mapImputations: MapImputation[];
     journees: Imputation[];
-    stacked: boolean;
 
-    constructor() {}
+    private eventSubscriber: Subscription;
+
+    typeImputations: TypeImputation[];
+
+    constructor(private eventManager: JhiEventManager,
+                private typeImputationService: TypeImputationService,
+                private jhiAlertService: JhiAlertService) {}
+
+    getAllTypesImputation() {
+        this.typeImputationService.query().subscribe(
+            (res: HttpResponse<TypeImputation[]>) => {
+                this.typeImputations = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+    }
 
     ngOnInit() {
+        this.getAllTypesImputation();
+        this.watchEventNewLigne();
 
         this.historiqueCommentaires = [
             {id: 1, libelle: 'Exemple de commentaire historisé 1', dateSaisie: 'Date du jour 1', auteur: 'Pascal'},
@@ -95,12 +115,16 @@ export class SaisieTempsComponent implements OnInit {
             {id: 30, jour: 30, client: 'Arkea'}
         ];
 
-        const nouvelleLigne = {type: 'MISSION', imputations: this.journees};
+        const nouvelleLigne = {type: {id: 1, code: 'MISSION', libelle: 'Mission'}, imputations: this.journees};
         this.mapImputations = [nouvelleLigne];
     }
 
-    addLigne(): void {
-        const nouvelleLigne = {type: 'TST', imputations: this.journees};
+    watchEventNewLigne() {
+        this.eventSubscriber = this.eventManager.subscribe('nouveauTypeImputation', (response) => this.addLigne(response.content));
+    }
+
+    addLigne(typeImputation: TypeImputation): void {
+        const nouvelleLigne = {type: typeImputation, imputations: this.journees};
         this.mapImputations = [...this.mapImputations, nouvelleLigne];
     }
 
@@ -149,5 +173,9 @@ export class SaisieTempsComponent implements OnInit {
                 duree = 1;
             }
         }
+    }
+
+    private onError(error) {
+        this.jhiAlertService.error(error.message, null, null);
     }
 }

@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <h2>Rapport d'Activité</h2>
 
-            <h5 class="pt-3 pb-2">Saisie des Imputations</h5>
+            <h5 class="pt-3 pb-2" jhiTranslate="gestLrApp.saisieTemps.title">Saisie des Imputations</h5>
 
             <div>
                 <p-table [value]="mapImputations">
@@ -11,13 +11,15 @@
                         <tr style="border: solid 1px #CDCDCD">
                             <th [attr.colspan]="calendrierImputations.length + 2"
                                 class="temps-align-center">
-                                Imputations
+                                <span jhiTranslate="gestLrApp.saisieTemps.labels.imputations">Imputations</span>
                             </th>
                         </tr>
 
                         <tr>
                             <th class="temps-align-center col-width-120"
-                                style="border: solid 1px #CDCDCD">Type</th>
+                                style="border: solid 1px #CDCDCD">
+                                <span jhiTranslate="gestLrApp.saisieTemps.labels.type">Type</span>
+                            </th>
 
                             <th *ngFor="let journee of calendrierImputations | orderBy:'jour'"
                                 [ngClass]="(journee.type=='WE' || journee.type=='FERIE') ?
@@ -29,13 +31,13 @@
 
                             <th class="temps-align-center"
                                 style="border: solid 1px #CDCDCD">
-                                Totaux
+                                <span jhiTranslate="gestLrApp.saisieTemps.labels.totaux">Totaux</span>
                             </th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-rowData>
                         <tr class="temps-align-center">
-                            <td class="col-width-120" style="border: solid 1px #CDCDCD;">{{ rowData.type }}</td>
+                            <td class="col-width-120" style="border: solid 1px #CDCDCD;">{{ rowData.type.libelle }}</td>
 
                             <td *ngFor="let imputation of rowData.imputations | orderBy:'jour'" pEditableColumn
                                 [ngClass]="isJourWeOuFerie(imputation) ? 'temps-align-center temps-col-we-ferie':''"
@@ -62,10 +64,17 @@
                     <ng-template pTemplate="footer" let-rowData>
                         <tr style="border: solid 1px #CDCDCD">
                             <td [attr.colspan]="10">
-                                <button type="button" pButton icon="fa-plus" (click)="addLigne()" label="Ajouter une ligne"></button>
+                                <button class="btn btn-primary" [routerLink]="['/', { outlets: { popup: ['saisie-temps-new'] } }]">
+                                    <span class="fa fa-plus"></span>
+                                    <span  jhiTranslate="gestLrApp.saisieTemps.buttons.add">
+                                        Ajouter une ligne
+                                    </span>
+                                </button>
                             </td>
 
-                            <td class="temps-text-bold temps-align-right" [attr.colspan]="calendrierImputations.length - 9">Total</td>
+                            <td class="temps-text-bold temps-align-right" [attr.colspan]="calendrierImputations.length - 9">
+                                <span jhiTranslate="gestLrApp.saisieTemps.labels.total">Total</span>
+                            </td>
 
                             <td class="temps-align-center">{{ sommeTotaleImputationsByType() }}</td>
                         </tr>
@@ -80,19 +89,22 @@
                 <textarea class="force-width-100" [rows]="4" pInputTextarea [(ngModel)]="commentaire"></textarea>
             </div>
 
-            <h5 class="pt-3 pb-2">Historique des Commentaires</h5>
+            <h5 class="pt-3 pb-2" jhiTranslate="gestLrApp.saisieTemps.labels.commentairesTitle">Historique des Commentaires</h5>
             <div class="force-width-100 pb-2">
                 <div  *ngFor="let commentaireHistorise of historiqueCommentaires | orderBy:'id':true" class="bloc-commentaire">
                     <div class="date-commentaire">
-                        Par <span class="text-medium-pink-lr">{{ commentaireHistorise.auteur }}</span> le <span class="text-medium-pink-lr">{{ commentaireHistorise.dateSaisie }}</span>
+                        <span jhiTranslate="gestLrApp.saisieTemps.labels.by">Par </span>
+                        <span class="text-medium-pink-lr">{{ commentaireHistorise.auteur }}</span>
+                        <span jhiTranslate="gestLrApp.saisieTemps.labels.le"> le </span>
+                        <span class="text-medium-pink-lr">{{ commentaireHistorise.dateSaisie }}</span>
                     </div>
                     <div>{{ commentaireHistorise.libelle }}</div>
                     <br>
                 </div>
             </div>
             <div class="pt-2">
-                <button pButton type="button" class="pink-lr" label="Enregistrer"></button>
-                <button pButton type="button" class="pink-lr" label="Valider"></button>
+                <button pButton type="button" class="pink-lr" label="{{'gestLrApp.saisieTemps.buttons.save' | translate}}"></button>
+                <button pButton type="button" class="pink-lr" label="{{'gestLrApp.saisieTemps.buttons.validate' | translate}}"></button>
             </div>
         </div>
     </div>

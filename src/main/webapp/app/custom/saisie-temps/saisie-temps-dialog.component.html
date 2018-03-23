@@ -1,0 +1,26 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myImputationLabel" jhiTranslate="gestLrApp.saisieTemps.dialog.title">Rajout d'une ligne de temps</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestLrApp.saisieTemps.labels.type" for="field_type">Type</label>
+            <select class="form-control" id="field_type" name="type" [(ngModel)]="typeImputationSaisi">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="typeImputationOption" *ngFor="let typeImputationOption of typeImputations; trackBy: trackTypeImputationById">{{typeImputationOption.libelle}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="gestLrApp.saisieTemps.buttons.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-check"></span>&nbsp;<span jhiTranslate="gestLrApp.saisieTemps.buttons.validate">Validate</span>
+        </button>
+    </div>
+</form>
